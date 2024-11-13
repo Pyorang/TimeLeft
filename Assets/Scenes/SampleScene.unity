@@ -426,6 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1308371143}
+  - component: {fileID: 1308371144}
   m_Layer: 0
   m_Name: Mob Spawner
   m_TagString: Untagged
@@ -442,12 +443,27 @@ Transform:
   m_GameObject: {fileID: 1308371142}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 0, z: 0}
+  m_LocalPosition: {x: 25, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1308371144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308371142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4024f18dbb19eeb4ba241daad7abaa33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnCycle: 5
+  MonsterPrefab:
+  - {fileID: 1525057687820894160, guid: 906384d5f828777478db96e2cdc92519, type: 3}
 --- !u!1 &1444103631
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +477,7 @@ GameObject:
   - component: {fileID: 1444103636}
   - component: {fileID: 1444103635}
   - component: {fileID: 1444103632}
+  - component: {fileID: 1444103639}
   - component: {fileID: 1444103637}
   - component: {fileID: 1444103638}
   m_Layer: 0
@@ -531,7 +548,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 670005215, guid: b9c132c476e29e44f8baafd538cd2e63, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -642,9 +659,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef243f13e8c5a774da0ca37834202710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 450
-  attackCoolDown: 1
-  playerAnim: {fileID: 1444103638}
+  monsterCheck:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &1444103638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,6 +674,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b4b6932a6160a4cb906a9703cf92cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1444103639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444103631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd42f33d1791b5944a1c2d8f551239f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 1
+  attackCoolDown: 1
+  attackRange: 7.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
