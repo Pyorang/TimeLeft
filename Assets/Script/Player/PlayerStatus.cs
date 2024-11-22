@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStatus : MonoBehaviour
 {
-    [SerializeField] private int hp = 3;
+    [SerializeField] private int lifeCount = 3;
 
-    [SerializeField] private float attackCoolDown = 1f;       // 1
-    [SerializeField] private float attackRange = 7.5f;          // 7.5
+    [SerializeField] private float attackCoolDown = 1f;
+    [SerializeField] private float attackRange = 7.5f;
+
+    public delegate void LifeCountChanged(int lifeCount);
+    public static event LifeCountChanged OnLifeCountChanged;
 
     private PlayerAnimation playerAnimation;
     private PlayerControl playerControl;
@@ -16,6 +21,16 @@ public class PlayerStatus : MonoBehaviour
     {
         playerAnimation = GetComponent<PlayerAnimation>();
         playerControl = GetComponent<PlayerControl>();
+    }
+
+    public int LifeCount
+    {
+        get { return lifeCount; }
+        private set
+        {
+            lifeCount = value;
+            OnLifeCountChanged?.Invoke(lifeCount);
+        }
     }
 
     public float AttackCoolDown
@@ -32,9 +47,9 @@ public class PlayerStatus : MonoBehaviour
 
     public void HPDown()
     {
-        hp--;
+        LifeCount--;
         
-        if(hp <=0)
+        if(LifeCount <=0)
         {
             Die();
             return;

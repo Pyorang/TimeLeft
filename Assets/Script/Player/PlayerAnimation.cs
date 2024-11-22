@@ -12,4 +12,5 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     public void TriggerAttackAnimation() { anim.SetTrigger("Attack"); }
+    public void TriggerJumpAttackAnimation() { anim.SetTrigger("JumpAttack"); }
 }

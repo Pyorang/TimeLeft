@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -16,6 +17,16 @@ public class PlayerControl : MonoBehaviour
     {
         playerAnim = GetComponent<PlayerAnimation>();
         playerStatus = GetComponent<PlayerStatus>();
+    }
+
+    private void Update()
+    {
+        if (notDead)
+        {
+            Debug.DrawRay(transform.position, Vector3.right * playerStatus.AttackRange, Color.red);
+            WaitForAtk();
+            WaitForJumpAtk();
+        }
     }
 
     public void SetNotDead(bool notDead)
@@ -54,7 +65,11 @@ public class PlayerControl : MonoBehaviour
 
     private void JumpAtk()
     {
-        Debug.Log("점프 공격 중");
+        playerAnim.TriggerJumpAttackAnimation();
+
+        Monster monster = CheckMonsterInRange();
+        if (monster != null)
+            monster.Dead();
     }
 
     private void WaitForAtk()
@@ -74,15 +89,6 @@ public class PlayerControl : MonoBehaviour
             if (!isJumping) JumpAtk();
             isJumping = true;
             StartCoroutine(StartJumpAtkCoolDown());
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if(notDead)
-        {
-            WaitForAtk();
-            WaitForJumpAtk();
         }
     }
 }
