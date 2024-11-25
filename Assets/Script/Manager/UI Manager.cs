@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -13,8 +14,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI lifeCountText;
     [SerializeField] private Button pauseMenuButton;
-    
+
+    [SerializeField] private Button[] attackButtons;
+
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private string mainScene;
 
     private void Start()
     {
@@ -43,13 +47,15 @@ public class UIManager : MonoBehaviour
 
     private void UpdateLifeCountText(int lifeCount) { lifeCountText.text = lifeCount.ToString(); }
 
-    public void OnPauseMenuBtnClicked() 
+    public void SetAttackBtns(bool isAvailable)
     {
-        GameManager.OnMenuButtonClicked?.Invoke(); 
+        foreach(var attackButton in  attackButtons)
+        {
+            attackButton.gameObject.SetActive(isAvailable);
+        }
     }
 
-    public void OnResumeMenuBtnClicked() 
-    {
-        GameManager.OnMenuButtonClicked?.Invoke();
-    }
+    public void OnPauseMenuBtnClicked() { GameManager.OnMenuButtonClicked?.Invoke(); }
+    public void OnResumeMenuBtnClicked() { GameManager.OnMenuButtonClicked?.Invoke(); }
+    public void OnExitMenuBtnClicked() { SceneManager.LoadScene(mainScene); }
 }

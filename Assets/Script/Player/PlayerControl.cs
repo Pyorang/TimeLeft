@@ -91,4 +91,24 @@ public class PlayerControl : MonoBehaviour
             StartCoroutine(StartJumpAtkCoolDown());
         }
     }
+
+    public void OnAttackBtnClicked()
+    {
+        if (!isJumping)
+        {
+            if (!isAttacking) Attack();
+            isAttacking = true;
+            StartCoroutine(StartAtkCoolDown());
+        }
+    }
+
+    public void OnJumpAttackBtnClicked()
+    {
+        if (!isAttacking)
+        {
+            if (!isJumping) JumpAtk();
+            isJumping = true;
+            StartCoroutine(StartJumpAtkCoolDown());
+        }
+    }
 }

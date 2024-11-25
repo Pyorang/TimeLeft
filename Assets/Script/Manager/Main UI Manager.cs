@@ -6,16 +6,38 @@ using UnityEngine.UI;
 
 public class MainUIManager : MonoBehaviour
 {
-    [SerializeField] private string nextScene;
+    [SerializeField] private string gameScene;
     [SerializeField] private Button[] buttonList;
 
+    [SerializeField] private GameObject mainBtnProtection;
     [SerializeField] private GameObject howToPlay;
     [SerializeField] private GameObject credit;
 
-    public void OnStartBtnClicked() { SceneManager.LoadScene(nextScene); }
-    public void OnHowToPlayBtnClicked() { howToPlay.SetActive(true); }
-    public void OnHowToPlayCloseBtnClicked() { howToPlay.SetActive(false); }
-    public void OnCreditBtnClicked() { credit.SetActive(true); }
-    public void OnCreditCloseBtnClicked() { credit.SetActive(false); }
+    public void OnStartBtnClicked() { SceneManager.LoadScene(gameScene); }
+    
+    public void OnHowToPlayBtnClicked() 
+    {
+        mainBtnProtection.SetActive(true);
+        howToPlay.SetActive(true); 
+    }
+
+    public void OnHowToPlayCloseBtnClicked() 
+    {
+        mainBtnProtection.SetActive(false);
+        howToPlay.SetActive(false); 
+    }
+    
+    public void OnCreditBtnClicked() 
+    {
+        mainBtnProtection.SetActive(true);
+        credit.SetActive(true); 
+    }
+    
+    public void OnCreditCloseBtnClicked() 
+    { 
+        mainBtnProtection.SetActive(false);
+        credit.SetActive(false); 
+    }
+    
     public void OnExitBtnClicked() { Application.Quit(); }
 }

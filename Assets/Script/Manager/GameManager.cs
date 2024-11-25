@@ -23,12 +23,14 @@ public class GameManager : MonoBehaviour
             else { Time.timeScale = 1f; }
 
             isPaused = value;
+            uiManager.SetAttackBtns(!value);
             uiManager.ProcessingPauseMenu(value);
         }
     }
 
     private void Start()
     {
+        IsPaused = false;
         OnMenuButtonClicked.AddListener(()=>ChangeIsPaused());
     }
 
