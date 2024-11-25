@@ -17,15 +17,15 @@ public class OpeningVideoManager : MonoBehaviour
 
     private void Start()
     {
-        //GameManager에게 firstOpening 정보 받아오기
-        
+        // GameManager에게 firstOpening 정보 받아오기
+
         currentVideoIndex = 1;
 
         if (firstOpening) ProcessFirstOpening();
 
         if (openings.Length > 0 && backGround != null)
         {
-            PlayVideo(currentVideoIndex);
+            StartCoroutine(PlayVideoAsync(currentVideoIndex));
         }
     }
 
@@ -36,13 +36,22 @@ public class OpeningVideoManager : MonoBehaviour
         buttons.SetActive(false);
     }
 
-    private void PlayVideo(int index)
+    private IEnumerator PlayVideoAsync(int index)
     {
         if (index < openings.Length)
         {
             backGround.clip = openings[index];
+
+            backGround.Prepare();
+
+            while (!backGround.isPrepared)
+            {
+                yield return null;
+            }
+
             backGround.Play();
-            if(index == openings.Length - 1)
+
+            if (index == openings.Length - 1)
             {
                 backGround.isLooping = true;
             }
@@ -57,7 +66,7 @@ public class OpeningVideoManager : MonoBehaviour
 
         if (currentVideoIndex < openings.Length)
         {
-            PlayVideo(currentVideoIndex);
+            StartCoroutine(PlayVideoAsync(currentVideoIndex));
         }
         else
         {
@@ -74,6 +83,6 @@ public class OpeningVideoManager : MonoBehaviour
         skipButton.gameObject.SetActive(false);
         buttons.SetActive(true);
 
-        PlayVideo(openings.Length - 1);
+        StartCoroutine(PlayVideoAsync(openings.Length - 1));
     }
 }

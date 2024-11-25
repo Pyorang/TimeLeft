@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class MainUIManager : MonoBehaviour
 {
     [SerializeField] private string gameScene;
-    [SerializeField] private Button[] buttonList;
 
     [SerializeField] private GameObject mainBtnProtection;
     [SerializeField] private GameObject howToPlay;
