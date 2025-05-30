@@ -32,7 +32,7 @@ https://youtu.be/6OC92oxs4gA?t=113
 - 아트
 
 ## 개발 환경
-Engine : Unity (버전: 2022.3.10f1)
+Engine : Unity (버전: 2022.3.37f1)
 
 ## 게임 방법
 조작 : 화면 터치
