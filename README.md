@@ -8,6 +8,8 @@
 
 #### 플레이 중
 ![image](https://github.com/user-attachments/assets/5196b5af-24ab-40ef-a2c3-f6520d728a2b)
+![image](https://github.com/user-attachments/assets/d908008c-e82b-4a61-943c-d68a5feebc20)
+
 
 #### 사용한 아트 (직접 제작)
 ![달리기_스프라이트](https://github.com/user-attachments/assets/b7f1acc5-d08b-4625-8a66-1207a7cdec8d)
