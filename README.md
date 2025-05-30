@@ -3,9 +3,6 @@
 
 ## 프로젝트 소개
 
-#### 모바일 작동 (오프닝)
-![image](https://github.com/user-attachments/assets/19bc9c61-71a4-420e-9634-3d6ba999bcac)
-
 #### 실제 뮤비 영상
 ![image](https://github.com/user-attachments/assets/b2d48b60-0d27-4309-a341-30cbadd84624)
 
@@ -37,8 +34,8 @@ Engine : Unity (버전: 2022.3.10f1)
 
 ## 게임 방법
 조작 : 화면 터치
-ㄴ 공격과 점프 공격으로 구분
-ㄴ 몬스터 종류에 따라 가능한 공격이 달라짐.
+1. 공격과 점프 공격으로 구분
+2. 몬스터 종류에 따라 가능한 공격이 달라짐.
 
 ## 개발 상황
 현재는 아트가 바쁜 일정으로 무기한 연기되고 있습니다.
